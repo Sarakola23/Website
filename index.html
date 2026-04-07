@@ -1,49 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sara's Portofolio</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sara Kola — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-            body {
-                font-family: 'Courier New', Courier, monospace;
-                line-height: 1.6;
-                color: black;
-            }
+  :root {
+    --cream: #F9F7F2;
+    --ink: #1A1814;
+    --ink-muted: #6B6760;
+    --ink-faint: #C4C2BC;
+    --accent: #2A5C45;
+    --accent-light: #EBF2EE;
+    --border: #E4E1D8;
+  }
 
-            header {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                padding: 1rem 2rem;
-                position: sticky;
-                top: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <h1>
-                    Sara's Portofolio
-                </h1>
-                <u1>
-                </u1>
-            </nav>
-        </header>
-        <section>
-            <h2>
-                Welcome to Sara's Portofolio
-            </h2>
-            <p> 
-                Here you can find all the personal and school project's worked on by Sara!
-            </p>
-            <a href="#contact" class="btn">Check more here!</a>
-        </section>
-    </body>
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(249,247,242,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+  }
+
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  section { padding: 6rem 2.5rem; max-width: 860px; margin: 0 auto; }
+
+  /* Hero */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 8rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--ink-muted);
+    max-width: 480px;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Section headings */
+  .section-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 3rem;
+  }
+
+  /* About */
+  #about { border-bottom: 1px solid var(--border); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .skills-grid {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 2px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Projects */
+  #projects { border-bottom: 1px solid var(--border); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.75rem;
+    background: white;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .project-number {
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+  .project-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Contact */
+  .contact-block {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-text p {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    max-width: 380px;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.25rem; }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+
+  .contact-link-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    min-width: 60px;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 4rem 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-block { flex-direction: column; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Sara Kola</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <p class="hero-label">Software Developer</p>
+  <h1 class="hero-name">Sara<br/><em>Kola.</em></h1>
+  <p class="hero-sub">Building thoughtful software — from personal experiments to academic projects.</p>
+  <div class="hero-links">
+    <a href="#projects" class="btn-primary">View my work</a>
+    <a href="#contact" class="btn-outline">Get in touch</a>
+  </div>
+</section>
+
+<section id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">Who I am</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a software developer with a passion for writing clean, purposeful code. I enjoy working across the stack and learning through building.</p>
+      <p>Currently looking for opportunities where I can contribute, grow, and solve real problems with technology.</p>
+    </div>
+    <div>
+      <p class="section-label" style="margin-bottom: 1rem;">Skills</p>
+      <div class="skills-grid">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Node.js</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <p class="section-label">Work</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <p class="project-number">01</p>
+      <h3 class="project-title">Project Name</h3>
+      <p class="project-desc">A short description of what this project does and what problem it solves. Replace this with your actual project.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Flask</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <p class="project-number">02</p>
+      <h3 class="project-title">Project Name</h3>
+      <p class="project-desc">Another project description. Mention key features, what you learned, or the impact it had.</p>
+      <div class="project-tags">
+        <span class="project-tag">React</span>
+        <span class="project-tag">CSS</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <p class="project-number">03</p>
+      <h3 class="project-title">Project Name</h3>
+      <p class="project-desc">School or personal project. Describe what you built and the technologies you used.</p>
+      <div class="project-tags">
+        <span class="project-tag">Java</span>
+        <span class="project-tag">SQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">Let's talk</h2>
+  <div class="contact-block">
+    <div class="contact-text">
+      <p>I'm currently open to new opportunities. Whether you have a role in mind or just want to connect, my inbox is open.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:your@email.com" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        your@email.com
+      </a>
+      <a href="https://github.com/sarakola23" class="contact-link">
+        <span class="contact-link-label">GitHub</span>
+        github.com/sarakola23
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" class="contact-link">
+        <span class="contact-link-label">LinkedIn</span>
+        linkedin.com/in/yourprofile
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Sara Kola</span>
+  <span>2026</span>
+</footer>
+
+</body>
 </html>
