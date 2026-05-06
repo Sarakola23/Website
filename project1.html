@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Project 1 </title>
+        <style>
+            body {
+                background-color:  #f7f7f0;
+                font-family: 'DM Sans', sans-serif;
+            }
+
+            section:first-of-type {
+                margin-top: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            .page-content {
+                margin-top: 9%;
+                margin-left: 350px;
+                margin-right: 350px;
+            }
+
+            .body-name {
+                font-family: 'DM Serif Display', serif;
+                font-size: 60px;
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+                font-weight: bold;
+                margin-left: 0;
+                margin-top: 0px;
+            }
+
+            .title-name {
+                font-family: 'DM Sans', sans-serif;
+                font-style: italic;
+                font-size: 17px;
+                font-weight: 500;
+                color: rgb(128, 128, 128);
+                margin-top: 0px;
+                margin-left: 0px;
+            }
+
+            .sec-part {
+               color: #2A5C45;
+            }
+
+            html {scroll-behavior: smooth;}
+
+            nav {
+                position: fixed; top: 0; left: 0; right: 0;
+                background-color: #f7f7f0;
+                border-bottom: 1px solid #d3d3ca;
+                color: black;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+                height: 70px;
+                line-height: 70px;
+                overflow: hidden;
+            }
+
+            .nav-title {
+                font-family: Serif;
+                font-size: 28px;
+                font-weight: bold;
+                color: black;
+                padding-left: 20px;
+            }
+
+            .nav-back {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 15px;
+                color: rgb(128, 128, 128);
+                text-decoration: none;
+                letter-spacing: 0.5px;
+            }
+
+            /*Add images for projects*/
+            .project-image {
+                width: 100%;
+                height: 300px;
+                margin-top: 20px;
+                border-color: #d3d3ca;
+                border-radius: 2px;
+                overflow: hidden;
+            }
+
+            .project-image img,  .project-image video {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: cover;
+            }
+
+            .image-grid {
+                display: grid;
+                grid-template-columns: calc(33% - 14px) calc(33% - 14px) calc(34% - 14px);
+                gap: 20px;
+                margin-bottom: 40px;
+                margin-left: 320px;
+                margin-right: 320px;
+            }
+
+            .separation {
+                display: grid;
+                border-top: 1px solid #d3d3ca;
+                margin-left: 350px;
+                margin-right: 350px;
+            }
+
+            #about-project {
+                margin-top: 55px;
+                margin-bottom: 55px;
+            }
+
+            .skills-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                align-content: flex-start;
+            }
+
+            .skill-tag {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 12.5px;
+                background-color: #EBF2EE;
+                color: #2A5C45;
+                width: 100px;
+                height: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .project-title {
+                font-family: 'DM Serif Display', serif;
+                font-size: 20px;
+                color: #1A1814;
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+                font-weight: bold;
+            }
+
+            .label-section {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 15px;
+                color: rgb(128, 128, 128);
+                text-decoration: none;
+                letter-spacing: 0.5px;
+                margin-left: 350px;
+                margin-top: 0px;
+            }
+
+            .title-section {
+                font-family: 'DM Serif Display', serif;
+                font-size: 35px;
+                color: #1A1814;
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+                font-weight: bold;
+                margin-left: 350px;
+                margin-top: 0px;
+            }
+
+            .section-text {
+                font-family: 'DM Sans', sans-serif;
+                font-style: italic;
+                font-size: 15px;
+                font-weight: 500;
+                color: rgb(128, 128, 128);
+                margin-top: 0px;
+            }
+
+            .about-grid {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                gap: 20px;
+                margin-left: 350px;
+                margin-right: 350px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <h1 class="nav-title">Sara Kola</h1>
+                <a href="index.html" class="nav-back">← Back to Home</a>
+            </nav>
+        </header>
+
+        <div class="page-content">
+                <h1 class="body-name">Project<br/><em class="sec-part">Drawing Gator</em></h1>
+        </div>
+
+        <section id="about-project">
+            <p class="label-section">About the project</p>
+            <h2 class="title-section">Drawing Gator</h2>
+            <div class="about-grid">
+                <div class="section-text">
+                    <p>Senior project</p>
+                    <p>Drawing Gator is an electromechanical system that transforms any digital image (e.g png, jpg, bmp, jpeg) into a physical drawing on a vertical surface.</p>
+                    <p>Below are some images from the project and the testing conducted while developing it.</p>
+                </div>
+                <div class="section-text">
+                    <p>Personal Contribution</p>
+                    <p>I worked on the image processing pipeline converting every image into SVG using OpenCV, potrace and mkbitmap as my source.</p>
+                    <p>Each image was processed in grayscale and colors and each line was extracted to later be displayed both as an image and as an animation.</p>
+                </div>
+            </div>
+            <div style="margin-left: 350px; margin-top: 20px;">
+                <p class="section-text" style="margin-bottom: 10px">Build with</p>
+                <div class="skills-grid">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PyQt6</span>
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">Potrace</span>
+                    <span class="skill-tag">mkbitmap</span>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <hr class="separation">
+
+        <section>
+            <div class="image-grid">
+                <div class="project-image">
+                    <img src="C:\Users\Sara Kola\Downloads\Screenshot 2026-04-30 161931.jpg" alt="Drawing Gator">
+                </div>
+
+                <div class="project-image">
+                    <img src="C:\Users\Sara Kola\Desktop\Screenshot 2026-04-30 162031.jpg" alt="Drawing Gator">
+                </div>
+
+                <div class="project-image">
+                    <img src="C:\Users\Sara Kola\Downloads\IMG_6200.jpg" alt="Drawing Gator">
+                </div>
+
+                <div class="project-image">
+                    <video autoplay loop muted playsinline>
+                        <source src="C:\Users\Sara Kola\Downloads\cool_guy.mp4" alt="Drawing Gator">
+                    </video>
+                </div>
+
+            </div>
+
+        </section>
+
+    </body>
+</html>

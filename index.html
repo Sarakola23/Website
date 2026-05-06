@@ -1,402 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sara Kola — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sara's Portofolio</title>
+        <style>
+            body {
+                background-color:  #f7f7f0;
+                font-family: 'DM Sans', sans-serif;
+            }
 
-  :root {
-    --cream: #F9F7F2;
-    --ink: #1A1814;
-    --ink-muted: #6B6760;
-    --ink-faint: #C4C2BC;
-    --accent: #2A5C45;
-    --accent-light: #EBF2EE;
-    --border: #E4E1D8;
-  }
+            section:first-of-type {
+                margin-top: 0;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
 
-  html { scroll-behavior: smooth; }
+            .body-name {
+                font-family: 'DM Serif Display', serif;
+                font-size: 90px;
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+                font-weight: bold;
+                margin-left: 350px;
+                margin-top: 0px;
+            }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.7;
-  }
+            .title-name {
+                font-family: 'DM Sans', sans-serif;
+                font-style: italic;
+                font-size: 17px;
+                font-weight: 500;
+                color: rgb(128, 128, 128);
+                margin-top: 0px;
+                margin-left: 350px;
+            }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(249,247,242,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 2.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    z-index: 100;
-  }
+            .sec-part {
+               color: #2A5C45;
+            }
 
-  .nav-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
+            html {scroll-behavior: smooth;}
 
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--ink-muted);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+            /*Navigation bar*/
+            nav {
+                position: fixed; top: 0; left: 0; right: 0;
+                background-color: #f7f7f0;
+                border-bottom: 1px solid #d3d3ca;
+                color: black;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 70px;
+                line-height: 70px;
+                overflow: hidden;
+            }
 
-  section { padding: 6rem 2.5rem; max-width: 860px; margin: 0 auto; }
+            /*Name formatting*/
+            .nav-title {
+                font-family: Serif;
+                font-size: 28px;
+                font-weight: bold;
+                color: black;
+                padding-left: 20px;
+            }
 
-  /* Hero */
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding-top: 8rem;
-    border-bottom: 1px solid var(--border);
-  }
+            .nav-section {
+                font-family: 'Arial Narrow';
+                font-size: 22px;
+                color: rgb(128, 128, 128);
+                text-decoration: none;
+                letter-spacing: 0.5px;
+                margin-left: auto;
+            }
 
-  .hero-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 1.25rem;
-  }
+            .separation {
+                display: grid;
+                border-top: 1px solid #d3d3ca;
+                margin-left: 350px;
+                margin-right: 350px;
+            }
 
-  .hero-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-  }
+            .label-section {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 15px;
+                color: rgb(128, 128, 128);
+                text-decoration: none;
+                letter-spacing: 0.5px;
+                margin-left: 350px;
+                margin-top: 0px;
+            }
 
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent);
-  }
+            .title-section {
+                font-family: 'DM Serif Display', serif;
+                font-size: 35px;
+                color: #1A1814;
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+                font-weight: bold;
+                margin-left: 350px;
+                margin-top: 0px;
+            }
 
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--ink-muted);
-    max-width: 480px;
-    font-weight: 300;
-    margin-bottom: 2.5rem;
-  }
+            .section-text {
+                font-family: 'DM Sans', sans-serif;
+                font-style: italic;
+                font-size: 15px;
+                font-weight: 500;
+                color: rgb(128, 128, 128);
+                margin-top: 0px;
+            }
 
-  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+            .section-text p {
+                margin: 0;
+                margin-bottom: 6px;
+            }
 
-  .btn-primary {
-    display: inline-block;
-    padding: 0.75rem 1.75rem;
-    background: var(--ink);
-    color: var(--cream);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: background 0.2s;
-  }
-  .btn-primary:hover { background: var(--accent); }
+            #about {
+                margin-top: 55px;
+                margin-bottom: 55px;
+            }
 
-  .btn-outline {
-    display: inline-block;
-    padding: 0.75rem 1.75rem;
-    border: 1px solid var(--border);
-    color: var(--ink);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+            #work {
+                margin-top: 55px;
+                margin-bottom: 55px;
+            }
 
-  /* Section headings */
-  .section-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
+            #contact {
+                margin-top: 55px;
+                margin-bottom: 55px;
+            }
 
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 3rem;
-  }
+            section {
+                margin-top: 350px;
+            }
 
-  /* About */
-  #about { border-bottom: 1px solid var(--border); }
+            .project-grid {
+                display: flex;
+                flex-wrap: wrap;
+                margin-left: 350px;
+                margin-right: 350px;
+            }
 
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
+            .project-card {
+                border: 1px solid #d3d3ca;
+                border-radius: 3px;
+                padding: 20px;
+                width: 200px;
+                height: 200px;
+                margin-right: auto;
+                background-color: white;
+                cursor: pointer;
+            }
 
-  .about-text p {
-    font-size: 1rem;
-    color: var(--ink-muted);
-    font-weight: 300;
-    margin-bottom: 1rem;
-  }
+            .project-card:hover {
+                transform: translateY(-2px);
+                border-width: 4px #000000;
+            }
 
-  .skills-grid {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-  }
+            .project-numbers {
+                font-family: 'Arial Narrow';
+                font-size: 17px;
+                color: rgb(128, 128, 128);
+                text-decoration: none;
+                letter-spacing: 0.5px;
+                margin-top: 0px;
+                margin-left: 0px;
+            }
 
-  .skill-tag {
-    display: inline-block;
-    padding: 0.3rem 0.9rem;
-    background: var(--accent-light);
-    color: var(--accent);
-    font-size: 0.8rem;
-    font-weight: 500;
-    border-radius: 2px;
-    letter-spacing: 0.01em;
-  }
+            .contact-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
 
-  /* Projects */
-  #projects { border-bottom: 1px solid var(--border); }
+            .contact-row {
+                display: flex;
+                align-items: center;
+                gap: 60px;
+            }
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
+            .contact-label {
+                font-family: 'Arial Narrow';
+                font-size: 15px;
+                color: rgb(180, 180, 180);
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                width: 80px;
+            }
 
-  .project-card {
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1.75rem;
-    background: white;
-    transition: border-color 0.2s, transform 0.2s;
-    cursor: pointer;
-  }
-  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+            .contact-value {
+                font-family: 'DM Sans', sans-serif;
+                text-decoration: none;
+                font-size: 15px;
+                color: black;
+            }
 
-  .project-number {
-    font-size: 0.75rem;
-    color: var(--ink-faint);
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
+            .button-section {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 13.6px;
+                border: 1px solid #d3d3ca;
+                color: rgb(54, 50, 50);
+                background-color: #1A1814;
+                width: 150px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                color: white;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            
+            .button-colors {
+                background-color: #f7f7f0;
+                color: black;
 
-  .project-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.2rem;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
+            }
 
-  .project-desc {
-    font-size: 0.88rem;
-    color: var(--ink-muted);
-    font-weight: 300;
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
+            .button-grid {
+                display: flex;
+                flex-direction: row;
+                gap: 50px;
+                margin-left: 350px;
+                margin-right: 20px;
+            }
 
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+            .about-grid {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                gap: 20px;
+                margin-left: 350px;
+                margin-right: 350px;
+            }
+            
+            .skills-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                align-content: flex-start;
+            }
 
-  .project-tag {
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    color: var(--ink-muted);
-    border: 1px solid var(--border);
-    padding: 0.2rem 0.6rem;
-    border-radius: 2px;
-    text-transform: uppercase;
-  }
+            .skill-tag {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 12.5px;
+                background-color: #EBF2EE;
+                color: #2A5C45;
+                width: 100px;
+                height: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
 
-  /* Contact */
-  .contact-block {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
+            .skill-tag-smaller {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 12.5px;
+                background-color: #EBF2EE;
+                color: #2A5C45;
+                width: 80px;
+                height: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
 
-  .contact-text p {
-    font-size: 1rem;
-    color: var(--ink-muted);
-    font-weight: 300;
-    max-width: 380px;
-  }
+            .project-title {
+                font-family: 'DM Serif Display', serif;
+                font-size: 20px;
+                color: #1A1814;
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+                font-weight: bold;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <h1 class="nav-title">Sara Kola</h1>
+                <ul></ul>
+            </nav>
+        </header>
+        <section>
+            <p class="title-name">Computer Engineer</p>
+            <h1 class="body-name">Sara<br/><em class="sec-part">Kola.</em></h1>
+        <div class="button-grid">
+            <a href="#work" class="button-section">View my work</a>
+            <a href="#contact" class="button-section button-colors">Get in touch</a>
+        </div>  
+        </section>
 
-  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.25rem; }
+        <hr class="separation">
 
-  .contact-link {
-    display: flex; align-items: center; gap: 0.75rem;
-    text-decoration: none;
-    color: var(--ink);
-    font-size: 0.9rem;
-    transition: color 0.2s;
-  }
-  .contact-link:hover { color: var(--accent); }
+        <section id="about">
+            <p class="label-section">About </p>
+            <h2 class="title-section">A little bit about me</h2>
+            <div class="about-grid">
+                <div class="section-text">
+                    <p>I am a computer engineering major at the University of Florida.</p>
+                    <p>I enjoy working on new projects and learning new languages and technologies.</p>
+                    <p>Currently, I am seeking opportunities to apply my skills and contribute to innovative projects.</p>
+                </div>
+            <div>
+                <p class="section-text" style="margin-bottom: 10px">Skills</p>
+                <div class="skills-grid">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">Rust</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">VHDL</span>
+                    <span class="skill-tag">ModelSim</span>
+                    <span class="skill-tag">Quartus</span>
+                </div>
+            </div>
+            </div>
+        </section>
 
-  .contact-link-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    font-weight: 500;
-    min-width: 60px;
-  }
+        <hr class="separation">
 
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 2.5rem;
-    max-width: 860px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: var(--ink-faint);
-  }
+        <section id="work">
+            <p class="label-section">Work</p>
+            <h2 class="title-section">Projects</h2>
+            <div class="project-grid">
+            <a href="project1.html" style="text-decoration: none; color: inherit; display: contents;">
+                <div class="project-card">
+                    <p class="project-numbers">01</p>
+                    <h3 class="project-title">Drawing Gator</h3>
+                    <p class="section-text" style="margin-top: 10px">Application that turns each image into vector lines to be drawn.</p>
+                    <div class="skills-grid" style="margin-top: 20px">
+                        <span class="skill-tag-smaller">Python</span>
+                        <span class="skill-tag-smaller">PyQt6</span>
+                    </div>
+                </div>
 
-  @media (max-width: 600px) {
-    nav { padding: 1rem 1.25rem; }
-    .nav-links { gap: 1.25rem; }
-    section { padding: 4rem 1.25rem; }
-    .about-grid { grid-template-columns: 1fr; }
-    .contact-block { flex-direction: column; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-  }
-</style>
-</head>
-<body>
+                <div class="project-card">
+                <a href="project2.html" style="text-decoration: none; color: inherit; display: contents;">
+                    <p class="project-numbers">02</p>
+                    <h3 class="project-title">MIPS Processor</h3>
+                    <p class="section-text" style="margin-top: 10px">32-bit MIPS-like processor designed and simulated in VHDL with FSM controller.</p>
+                    <div class="skills-grid" style="margin-top: 20px">
+                        <span class="skill-tag-smaller">VHDL</span>
+                        <span class="skill-tag-smaller">ModelSim</span>
+                    </div>
+                </div>
 
-<nav>
-  <span class="nav-name">Sara Kola</span>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+                <div class="project-card">
+                    <p class="project-numbers">03</p>
+                </div>
+            </a>
+            </div>
+        </section>
 
-<section id="hero">
-  <p class="hero-label">Software Developer</p>
-  <h1 class="hero-name">Sara<br/><em>Kola.</em></h1>
-  <p class="hero-sub">Building thoughtful software — from personal experiments to academic projects.</p>
-  <div class="hero-links">
-    <a href="#projects" class="btn-primary">View my work</a>
-    <a href="#contact" class="btn-outline">Get in touch</a>
-  </div>
-</section>
+        <hr class="separation">
 
-<section id="about">
-  <p class="section-label">About</p>
-  <h2 class="section-title">Who I am</h2>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I'm a software developer with a passion for writing clean, purposeful code. I enjoy working across the stack and learning through building.</p>
-      <p>Currently looking for opportunities where I can contribute, grow, and solve real problems with technology.</p>
-    </div>
-    <div>
-      <p class="section-label" style="margin-bottom: 1rem;">Skills</p>
-      <div class="skills-grid">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">HTML/CSS</span>
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">Node.js</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <p class="section-label">Work</p>
-  <h2 class="section-title">Projects</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <p class="project-number">01</p>
-      <h3 class="project-title">Project Name</h3>
-      <p class="project-desc">A short description of what this project does and what problem it solves. Replace this with your actual project.</p>
-      <div class="project-tags">
-        <span class="project-tag">Python</span>
-        <span class="project-tag">Flask</span>
-      </div>
-    </div>
-    <div class="project-card">
-      <p class="project-number">02</p>
-      <h3 class="project-title">Project Name</h3>
-      <p class="project-desc">Another project description. Mention key features, what you learned, or the impact it had.</p>
-      <div class="project-tags">
-        <span class="project-tag">React</span>
-        <span class="project-tag">CSS</span>
-      </div>
-    </div>
-    <div class="project-card">
-      <p class="project-number">03</p>
-      <h3 class="project-title">Project Name</h3>
-      <p class="project-desc">School or personal project. Describe what you built and the technologies you used.</p>
-      <div class="project-tags">
-        <span class="project-tag">Java</span>
-        <span class="project-tag">SQL</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <p class="section-label">Contact</p>
-  <h2 class="section-title">Let's talk</h2>
-  <div class="contact-block">
-    <div class="contact-text">
-      <p>I'm currently open to new opportunities. Whether you have a role in mind or just want to connect, my inbox is open.</p>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:your@email.com" class="contact-link">
-        <span class="contact-link-label">Email</span>
-        your@email.com
-      </a>
-      <a href="https://github.com/sarakola23" class="contact-link">
-        <span class="contact-link-label">GitHub</span>
-        github.com/sarakola23
-      </a>
-      <a href="https://linkedin.com/in/yourprofile" class="contact-link">
-        <span class="contact-link-label">LinkedIn</span>
-        linkedin.com/in/yourprofile
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>Sara Kola</span>
-  <span>2026</span>
-</footer>
-
-</body>
+        <section id="contact">
+            <p class="label-section">Contact</p>
+            <h2 class="title-section">Get in touch</h2>
+            <div class="about-grid">
+                <div class="section-text">
+                    <p>Feel free to reach out to me! I am open to any opportunities to collaborate or discuss potential projects or job opportunities.</p>
+                </div>
+                <div class="contact-links">
+                    <div class="contact-row">
+                        <span class="contact-label">Email</span>
+                        <a class="contact-value" href="mailto:sarakola23@gmail.com">sarakola23@gmail.com</a>
+                    </div>
+                    <div class="contact-row">
+                        <span class="contact-label">LinkedIn</span>
+                        <a class="contact-value" href="https://linkedin.com/in/sara-kola23" target="_blank">linkedin.com/in/sara-kola23</a>
+                    </div>
+                    <div class="contact-row">
+                        <span class="contact-label">Github</span>
+                        <a class="contact-value" href="https://github.com/sarakola23" target="_blank">github.com/sarakola23</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>
