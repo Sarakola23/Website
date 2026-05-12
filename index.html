@@ -8,6 +8,8 @@
             body {
                 background-color:  #f7f7f0;
                 font-family: 'DM Sans', sans-serif;
+                margin: 0;
+                padding: 0;
             }
 
             section:first-of-type {
@@ -279,7 +281,83 @@
                 letter-spacing: -0.03em;
                 font-weight: bold;
             }
-            
+
+            /*Work on phone*/
+            @media (max-width: 768px) {
+                .section:first-of-type {
+                    padding-top: 90px;
+                    min-height: 100vh;
+                    box-sizing: border-box;
+                }
+                section {
+                    margin-top: 50px;
+                }
+ 
+                #about, #work, #contact {
+                    margin-top: 40px;
+                    margin-bottom: 40px;
+                }
+ 
+                .body-name {
+                    font-size: 48px;
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+ 
+                .title-name {
+                    margin-left: 20px;
+                }
+ 
+                .button-grid {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                }
+ 
+                .separation {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+ 
+                .label-section {
+                    margin-left: 20px;
+                }
+ 
+                .title-section {
+                    font-size: 26px;
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+ 
+                .about-grid {
+                    grid-template-columns: 1fr;
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+ 
+                .project-grid {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    gap: 15px;
+                }
+ 
+                .project-card {
+                    width: 100%;
+                    height: auto;
+                    min-height: 160px;
+                }
+ 
+                .contact-row {
+                    gap: 20px;
+                }
+ 
+                .contact-value {
+                    font-size: 13px;
+                    word-break: break-all;
+                }
+            }
+
         </style>
     </head>
     <body>
