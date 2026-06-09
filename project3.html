@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodroll – Sara Kola</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400;1,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #f7f7f0;
+            font-family: 'DM Sans', sans-serif;
+            color: #1A1814;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background-color: #f7f7f0;
+            border-bottom: 1px solid #d3d3ca;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            height: 64px;
+            padding: 0 40px;
+            z-index: 100;
+        }
+
+        .nav-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 22px;
+            font-weight: normal;
+            color: #1A1814;
+        }
+
+        .nav-back {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            color: #888;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: #2A5C45; }
+
+        .page-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .hero {
+            padding-top: 130px;
+            padding-bottom: 60px;
+        }
+
+        .body-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(42px, 7vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            font-weight: normal;
+        }
+
+        .sec-part { color: #2A5C45; font-style: italic; }
+
+        .title-name {
+            font-size: 15px;
+            font-style: italic;
+            font-weight: 500;
+            color: #888;
+            margin-top: 12px;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #d3d3ca;
+        }
+
+        .about-section {
+            padding: 60px 0;
+        }
+
+        .label {
+            font-size: 13px;
+            color: #888;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(24px, 4vw, 38px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            font-weight: normal;
+            margin-bottom: 36px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .about-col p {
+            font-size: 14px;
+            font-style: italic;
+            color: #666;
+            line-height: 1.75;
+            margin-bottom: 14px;
+        }
+        .about-col p:last-child { margin-bottom: 0; }
+
+        .skills-label {
+            font-size: 13px;
+            color: #888;
+            letter-spacing: 0.4px;
+            margin-bottom: 12px;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            font-size: 12px;
+            background-color: #EBF2EE;
+            color: #2A5C45;
+            padding: 5px 14px;
+            border-radius: 2px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        .gallery-section {
+            padding: 60px 0 80px;
+        }
+
+        .image-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .gallery-row {
+            display: grid;
+            gap: 16px;
+        }
+
+        .gallery-row-1 { grid-template-columns: 1fr; }
+        .gallery-row-2 { grid-template-columns: repeat(2, 1fr); }
+        .gallery-row-3 { grid-template-columns: repeat(2, 1fr); }
+
+        .gallery-row-1 .card { aspect-ratio: 16 / 9; }
+        .gallery-row-2 .card,
+        .gallery-row-3 .card { aspect-ratio: 4 / 3; }
+
+        .card {
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #e8e8e0;
+            border: none;
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center top;
+            display: block;
+        }
+
+        .card .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .card .placeholder-icon {
+            width: 36px;
+            height: 28px;
+            opacity: 0.25;
+        }
+
+        .card .placeholder-label {
+            font-size: 12px;
+            color: #888;
+            letter-spacing: 0.4px;
+        }
+
+        .card:nth-child(1) { background-color: transparent; }
+        .card:nth-child(2) { background-color: transparent; }
+        .card:nth-child(3) { background-color: transparent; }
+        .card:nth-child(4) { background-color: transparent; }
+        .card:nth-child(5) { background-color: transparent; }
+
+        @media (max-width: 700px) {
+            nav { padding: 0 20px; }
+            .page-content { padding: 0 20px; }
+            .about-grid { grid-template-columns: 1fr; gap: 24px; }
+            .gallery-row-2,
+            .gallery-row-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <h1 class="nav-title">Sara Kola</h1>
+        <a href="index.html" class="nav-back">← Back to Home</a>
+    </nav>
+</header>
+
+<main class="page-content">
+
+    <section class="hero">
+        <h1 class="body-name">Project<br><em class="sec-part">Moodroll</em></h1>
+        <p class="title-name">Mood-based movie discovery</p>
+    </section>
+
+    <hr class="divider">
+
+    <section class="about-section">
+        <p class="label">About the project</p>
+        <h2 class="section-title">Moodroll</h2>
+
+        <div class="about-grid">
+            <div class="about-col">
+                <p>Fully working Web App</p>
+                <p>Moodroll is a mood-based movie discovery platform that helps users find films based on how they feel rather than traditional genres or search.</p>
+                <p>It integrates TMDB API for movie data and Supabase for authentication, user preferences, and saved lists.</p>
+            </div>
+            <div class="about-col">
+                <p>Worked on</p>
+                <p>● Built responsive React + TypeScript UI with dynamic mood filtering system.</p>
+                <p>● Integrated TMDB API for real-time movie data fetching and search.</p>
+                <p>● Implemented Supabase backend for authentication and persistent user data.</p>
+            </div>
+        </div>
+
+        <p class="skills-label">Built with</p>
+        <div class="skills-grid">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Supabase</span>
+            <span class="skill-tag">TMDB API</span>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Gallery -->
+    <section class="gallery-section">
+        <p class="label" style="margin-bottom: 24px;">Screenshots</p>
+        <div class="image-grid">
+            <div class="gallery-row gallery-row-1">
+                <div class="card">
+                    <img src="images/homepage.png" alt="Moodroll home"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Homepage</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-row gallery-row-2">
+                <div class="card">
+                    <img src="images/favoritepage.png" alt="Favorites"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Favorites</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/surprisepage.png" alt="Surprise me"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Surprise me</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-row gallery-row-3">
+                <div class="card">
+                    <img src="images/watchedpage.png" alt="Watched"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Watched</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/signup.png" alt="Sign Up"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Sign Up</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
