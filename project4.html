@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moodroll – Sara Kola</title>
+    <title>Trolley – Sara Kola</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400;1,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -171,6 +171,20 @@
         .gallery-row-2 .card,
         .gallery-row-3 .card { aspect-ratio: 4 / 3; }
 
+        .gallery-row-phone {
+            grid-template-columns: repeat(5, 1fr);
+        }
+        .gallery-row-phone .card {
+            aspect-ratio: 9 / 19.5;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-row-phone { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .gallery-row-phone { grid-template-columns: repeat(2, 1fr); }
+        }
+
         .card {
             border-radius: 4px;
             overflow: hidden;
@@ -259,46 +273,36 @@
 <main class="page-content">
 
     <section class="hero">
-        <h1 class="body-name">Project<br><em class="sec-part">Moodroll</em></h1>
-        <p class="title-name">Mood-based movie discovery</p>
-        <div class="contact-links">
-            <div class="contact-row">
-                <span class="contact-label">Github Repo</span>
-                <a class="contact-value" href="https://github.com/Sarakola23/moodroll" target="_blank">Moodroll Repo</a>
-            </div>
-            <div class="contact-row">
-                <span class="contact-label">Link to website</span>
-                <a class="contact-value" href="https://sarakola23.github.io/moodroll/" target="_blank">Website</a>
-            </div>
-        </div>
+        <h1 class="body-name">Project<br><em class="sec-part">Trolley</em></h1>
+        <p class="title-name">Sharable grocery list application</p>
     </section>
 
     <hr class="divider">
 
     <section class="about-section">
         <p class="label">About the project</p>
-        <h2 class="section-title">Moodroll</h2>
+        <h2 class="section-title">Trolley</h2>
 
         <div class="about-grid">
             <div class="about-col">
-                <p>Fully working Web App</p>
-                <p>Moodroll is a mood-based movie discovery platform that helps users find films based on how they feel rather than traditional genres or search.</p>
-                <p>It integrates TMDB API for movie data and Supabase for authentication, user preferences, and saved lists.</p>
+                <p>Fully working Apple Store application</p>
+                <p>Trolley is a sharable grocery list application that allows users to create and share grocery lists with friends and family.</p>
+                <p>It integrates Supabase for authentication, user preferences, and saved lists.</p>
             </div>
             <div class="about-col">
                 <p>Worked on</p>
-                <p>● Built responsive React + TypeScript UI with dynamic mood filtering system.</p>
-                <p>● Integrated TMDB API for real-time movie data fetching and search.</p>
-                <p>● Implemented Supabase backend for authentication and persistent user data.</p>
+                <p>● Built a React Native + TypeScript mobile app with Expo Router for navigation.</p>
+                <p>● Designed a real-time notification system using Supabase Postgres triggers and channels, including grouped activity (e.g. "Darren added 4 items").</p>
+                <p>● Implemented household invites, item assignment, and swipe-to-delete list interactions.</p>
             </div>
         </div>
 
         <p class="skills-label">Built with</p>
         <div class="skills-grid">
-            <span class="skill-tag">React</span>
+            <span class="skill-tag">React Native</span>
             <span class="skill-tag">TypeScript</span>
             <span class="skill-tag">Supabase</span>
-            <span class="skill-tag">TMDB API</span>
+            <span class="skill-tag">Expo Router</span>
         </div>
     </section>
 
@@ -307,56 +311,48 @@
     <!-- Gallery -->
     <section class="gallery-section">
         <div class="image-grid">
-            <div class="gallery-row gallery-row-1">
+            <div class="gallery-row gallery-row-phone">
                 <div class="card">
-                    <img src="images/homepage.png" alt="Moodroll home"
+                    <img src="images/IMG_3588 (2).png" alt="Trolley home dashboard"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="placeholder" style="display:none">
                         <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
-                        <span class="placeholder-label">Homepage</span>
+                        <span class="placeholder-label">Home</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/IMG_3591 (2).png" alt="Profile page"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Profile</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/IMG_3590 (2).png" alt="Household management"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Household</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/IMG_3594 (2).png" alt="Help and support"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Help &amp; Support</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/IMG_3589 (1).png" alt="Notifications"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="placeholder" style="display:none">
+                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
+                        <span class="placeholder-label">Notifications</span>
                     </div>
                 </div>
             </div>
-
-            <div class="gallery-row gallery-row-2">
-                <div class="card">
-                    <img src="images/favoritepage.png" alt="Favorites"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <div class="placeholder" style="display:none">
-                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
-                        <span class="placeholder-label">Favorites</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/surprisepage.png" alt="Surprise me"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <div class="placeholder" style="display:none">
-                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
-                        <span class="placeholder-label">Surprise me</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-row gallery-row-3">
-                <div class="card">
-                    <img src="images/watchedpage.png" alt="Watched"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <div class="placeholder" style="display:none">
-                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
-                        <span class="placeholder-label">Watched</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/signup.png" alt="Sign Up"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <div class="placeholder" style="display:none">
-                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
-                        <span class="placeholder-label">Sign Up</span>
-                    </div>
-                </div>
-                <div></div>
-            </div>
-
         </div>
     </section>
 
