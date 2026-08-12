@@ -1,422 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sara's Portofolio</title>
-        <link rel="stylesheet" href="style.css">
-        <style>
-            *, *::before, *::after {
-                box-sizing: border-box;
-            }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sara Kola — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Archivo:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #FAFAF6;
+    --paper-shadow: #ECEAE1;
+    --ink: #1C1C1C;
+    --ink-faded: #6b6b64;
+    --stamp: #C1440E;
+    --line: #cfcdc0;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:#e7e5da;
+    color:var(--ink);
+    font-family:'Space Mono', monospace;
+    padding:0 16px 80px;
+  }
 
-            html {
-                scroll-behavior: smooth;
-            }
+  nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    background:#e7e5da;
+    display:flex;
+    justify-content:center;
+    padding:16px 0 10px;
+    z-index:50;
+  }
+  .nav-inner{
+    max-width:640px;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faded);
+    padding:0 24px;
+  }
+  .nav-inner .brand{font-weight:700; color:var(--ink);}
+  .nav-links{display:flex; gap:18px;}
+  .nav-links a{color:var(--ink-faded); text-decoration:none;}
+  .nav-links a:hover{color:var(--stamp);}
 
-            body {
-                margin: 0;
-                min-height: 100vh;
-                background-color: #f7f7f0;
-                font-family: 'DM Sans', sans-serif;
-                color: #1A1814;
-                padding-top: 70px;
-            }
+  .top-spacer{height:70px;}
 
-            .page-container {
-                max-width: 1100px;
-                margin: 0 auto;
-                padding: 0 24px 80px;
-            }
+  .receipt{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--paper);
+    box-shadow: 0 1px 0 var(--paper-shadow), 0 30px 60px -20px rgba(0,0,0,0.25);
+    position:relative;
+    padding:0 40px;
+  }
+  .tear{
+    height:14px; width:100%;
+    background:
+      linear-gradient(135deg, transparent 8px, var(--paper) 8px) 0 0,
+      linear-gradient(-135deg, transparent 8px, var(--paper) 8px) 0 0;
+    background-size: 16px 16px;
+    background-repeat:repeat-x;
+    background-color:#e7e5da;
+  }
+  .tear-bottom{transform:scaleY(-1);}
 
-            section {
-                padding: 80px 0;
-            }
+  .hero-block{
+    text-align:center;
+    padding:44px 0 30px;
+  }
+  .hero-block .kicker{
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faded);
+    margin-bottom:14px;
+  }
+  .hero-block .name{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:44px;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .hero-block .name em{color:var(--stamp); font-style:normal;}
+  .hero-block .role{
+    font-size:12px;
+    color:var(--ink-faded);
+    margin-top:12px;
+  }
 
-            section:first-of-type {
-                padding-top: 100px;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
+  .cta-row{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-top:26px;
+  }
+  .cta{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:11px 20px;
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    background:transparent;
+  }
+  .cta.primary{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .cta:hover{border-color:var(--stamp); color:var(--stamp);}
+  .cta.primary:hover{background:var(--stamp); border-color:var(--stamp); color:var(--paper);}
 
-            .body-name {
-                font-family: 'DM Serif Display', serif;
-                font-size: clamp(4rem, 6vw, 90px);
-                line-height: 1.05;
-                letter-spacing: -0.03em;
-                font-weight: bold;
-                margin: 0;
-            }
+  .dashed{
+    border:none;
+    border-top:1.5px dashed var(--line);
+    margin:0;
+  }
 
-            .title-name {
-                font-family: 'DM Sans', sans-serif;
-                font-style: italic;
-                font-size: 17px;
-                font-weight: 500;
-                color: rgb(128, 128, 128);
-                margin: 0 0 32px;
-            }
+  .section{padding:34px 0;}
 
-            .sec-part {
-                color: #2A5C45;
-            }
+  .section-eyebrow{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-faded);
+    margin-bottom:14px;
+  }
 
-            nav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background-color: #f7f7f0;
-                border-bottom: 1px solid #d3d3ca;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 24px;
-                height: 70px;
-                z-index: 10;
-            }
+  .about-copy{
+    font-size:13.5px;
+    line-height:1.65;
+    color:var(--ink);
+    margin-bottom:12px;
+  }
+  .about-copy:last-child{margin-bottom:0;}
 
-            .nav-title {
-                font-family: Serif;
-                font-size: 28px;
-                font-weight: bold;
-                color: black;
-                margin: 0;
-            }
+  .sku-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 16px;
+    margin-top:16px;
+  }
 
-            .separation {
-                border-top: 1px solid #d3d3ca;
-                margin: 0;
-            }
+  .sku{
+    font-size:11px;
+    letter-spacing:0.03em;
+    color:var(--ink);
+    border-bottom:1px dotted var(--line);
+    padding-bottom:2px;
+    white-space:nowrap;
+  }
+  .sku::before{content:"#"; color:var(--ink-faded);}
 
-            .label-section {
-                font-family: 'DM Sans', sans-serif;
-                font-size: 15px;
-                color: rgb(128, 128, 128);
-                letter-spacing: 0.5px;
-                margin: 0 0 12px;
-            }
+  /* Projects as receipt line-items */
+  .items{
+    list-style:none;
+  }
+  .item{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    padding:14px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .item:last-child{border-bottom:none;}
+  .item-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+  }
+  .item-num{
+    font-size:11px;
+    color:var(--ink-faded);
+    width:24px;
+    flex-shrink:0;
+  }
+  .item-name{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    flex:1;
+  }
+  .item-tag{
+    font-size:10px;
+    color:var(--stamp);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    flex-shrink:0;
+  }
+  .item-desc{
+    font-size:12.5px;
+    color:var(--ink-faded);
+    line-height:1.6;
+    margin:6px 0 8px 24px;
+  }
+  .item-skus{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 14px;
+    margin-left:24px;
+  }
+  .item-skus .sku{font-size:10px;}
 
-            .title-section {
-                font-family: 'DM Serif Display', serif;
-                font-size: clamp(2rem, 3vw, 35px);
-                color: #1A1814;
-                line-height: 1.05;
-                letter-spacing: -0.03em;
-                font-weight: bold;
-                margin: 0 0 24px;
-            }
+  .subtotal{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:14px;
+    padding-top:16px;
+    margin-top:6px;
+    border-top:1.5px solid var(--ink);
+  }
 
-            .section-text {
-                font-family: 'DM Sans', sans-serif;
-                font-style: italic;
-                font-size: 15px;
-                font-weight: 500;
-                color: rgb(128, 128, 128);
-                margin: 0;
-            }
+  .contact-block .about-copy{margin-bottom:20px;}
+  .contact-links{list-style:none;}
+  .contact-links li{
+    display:flex;
+    gap:16px;
+    font-size:12.5px;
+    padding:8px 0;
+    border-bottom:1px dotted var(--line);
+    align-items:baseline;
+  }
+  .contact-links li:last-child{border-bottom:none;}
+  .contact-links .label{
+    width:70px;
+    flex-shrink:0;
+    color:var(--ink-faded);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-size:10.5px;
+  }
+  .contact-links a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line);}
+  .contact-links a:hover{color:var(--stamp); border-color:var(--stamp);}
 
-            .section-text p {
-                margin: 0 0 10px;
-            }
+  .barcode{
+    height:34px;
+    margin:6px 0 6px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--ink) 0px, var(--ink) 2px,
+      transparent 2px, transparent 4px,
+      var(--ink) 4px, var(--ink) 5px,
+      transparent 5px, transparent 9px,
+      var(--ink) 9px, var(--ink) 12px,
+      transparent 12px, transparent 14px
+    );
+    opacity:0.85;
+  }
+  .barcode-num{
+    text-align:center;
+    font-size:10.5px;
+    letter-spacing:0.3em;
+    color:var(--ink-faded);
+    margin-bottom:24px;
+  }
+  .thanks{
+    text-align:center;
+    font-size:11.5px;
+    color:var(--ink-faded);
+    padding-bottom:34px;
+  }
+  .thanks .big{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    color:var(--ink);
+    display:block;
+    margin-bottom:6px;
+    letter-spacing:0.05em;
+  }
 
-            .button-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 16px;
-                margin-top: 32px;
-            }
+  @media (max-width:700px){
+    .receipt{padding:0 20px;}
+    .hero-block .name{font-size:34px;}
+    .item-desc, .item-skus{margin-left:0;}
+  }
 
-            .button-section {
-                font-family: 'DM Sans', sans-serif;
-                font-size: 13.6px;
-                border: 1px solid #d3d3ca;
-                background-color: #1A1814;
-                width: 160px;
-                height: 50px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                text-decoration: none;
-                cursor: pointer;
-            }
+  .item-main {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
 
-            .button-colors {
-                background-color: #f7f7f0;
-                color: black;
-            }
+.item-main:hover .item-name {
+  color: var(--stamp);
+}
 
-            .about-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 24px;
-            }
+.sku-link {
+  text-decoration: none;
+  cursor: pointer;
+}
 
-            .skills-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-                align-content: flex-start;
-            }
+.sku-link:hover {
+  color: var(--stamp);
+  border-bottom-color: var(--stamp);
+}
+</style>
+</head>
+<body>
 
-            .skill-tag,
-            .skill-tag-smaller {
-                font-family: 'DM Sans', sans-serif;
-                font-size: 12.5px;
-                background-color: #EBF2EE;
-                color: #2A5C45;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                padding: 0 10px;
-                height: 30px;
-            }
+<nav>
+  <div class="nav-inner">
+    <span class="brand">SARA KOLA</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+<div class="top-spacer"></div>
 
-            .skill-tag {
-                min-width: 100px;
-            }
+<div class="receipt">
+  <div class="tear tear-top"></div>
 
-            .skill-tag-smaller {
-                min-width: 80px;
-            }
+  <div class="hero-block">
+    <div class="kicker">Computer Engineer</div>
+    <h1 class="name">Sara<br><em>Kola.</em></h1>
+    <div class="role">University of Florida · Building things that ship</div>
+    <div class="cta-row">
+      <a href="#work" class="cta primary">View My Work</a>
+      <a href="#contact" class="cta">Get In Touch</a>
+    </div>
+  </div>
 
-            .project-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                gap: 24px;
-            }
+  <hr class="dashed">
 
-            .project-link {
-                color: inherit;
-                text-decoration: none;
-            }
+  <section class="section" id="about">
+    <div class="section-eyebrow">About</div>
+    <p class="about-copy">Computer Engineering major at UF, with a passion for software development.</p>
+    <p class="about-copy">I enjoy working on new projects and learning new languages and technologies.</p>
+    <p class="about-copy">Currently seeking opportunities to apply my skills and contribute to innovative projects.</p>
+    <div class="sku-row">
+      <span class="sku">Python</span>
+      <span class="sku">C/C++</span>
+      <span class="sku">TypeScript</span>
+      <span class="sku">Expo Router</span>
+      <span class="sku">React</span>
+      <span class="sku">React Native</span>
+      <span class="sku">Rust</span>
+      <span class="sku">SQL</span>
+      <span class="sku">Supabase</span>
+      <span class="sku">Git</span>
+      <span class="sku">MATLAB</span>
+      <span class="sku">VHDL</span>
+      <span class="sku">ModelSim</span>
+      <span class="sku">Quartus</span>
+    </div>
+  </section>
 
-            .project-card {
-                border: 1px solid #d3d3ca;
-                border-radius: 8px;
-                padding: 24px;
-                min-height: 220px;
-                background-color: white;
-                transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-            }
+  <hr class="dashed">
 
-            .project-card:hover {
-                transform: translateY(-4px);
-                border-color: #a7ad9e;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            }
-
-            .project-numbers {
-                font-family: 'Arial Narrow';
-                font-size: 17px;
-                color: rgb(128, 128, 128);
-                margin: 0;
-            }
-
-            .project-title {
-                font-family: 'DM Serif Display', serif;
-                font-size: 20px;
-                color: #1A1814;
-                line-height: 1.05;
-                letter-spacing: -0.03em;
-                font-weight: bold;
-                margin: 0;
-            }
-
-            .contact-links {
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .contact-row {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                gap: 16px;
-            }
-
-            .contact-label {
-                font-family: 'Arial Narrow';
-                font-size: 15px;
-                color: rgb(180, 180, 180);
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                width: 90px;
-            }
-
-            .contact-value {
-                font-family: 'DM Sans', sans-serif;
-                text-decoration: none;
-                font-size: 15px;
-                color: black;
-            }
-
-            @media (max-width: 640px) {
-                .nav-title {
-                    font-size: 24px;
-                }
-
-                .button-grid {
-                    justify-content: flex-start;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <h1 class="nav-title">Sara Kola</h1>
-                <ul></ul>
-            </nav>
-        </header>
-        <div class="page-container">
-        <section>
-            <p class="title-name">Computer Engineer</p>
-            <h1 class="body-name">Sara<br/><em class="sec-part">Kola.</em></h1>
-        <div class="button-grid">
-            <a href="#work" class="button-section">View my work</a>
-            <a href="#contact" class="button-section button-colors">Get in touch</a>
-        </div>  
-        </section>
-
-        <hr class="separation">
-
-        <section id="about">
-            <p class="label-section">About </p>
-            <h2 class="title-section">A little bit about me</h2>
-            <div class="about-grid">
-                <div class="section-text">
-                    <p>I am a computer engineering major at the University of Florida.</p>
-                    <p>I enjoy working on new projects and learning new languages and technologies.</p>
-                    <p>Currently, I am seeking opportunities to apply my skills and contribute to innovative projects.</p>
-                </div>
-            <div>
-                <p class="section-text" style="margin-bottom: 10px">Skills</p>
-                <div class="skills-grid">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">C/C++</span>
-                    <span class="skill-tag">Rust</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">MATLAB</span>
-                    <span class="skill-tag">VHDL</span>
-                    <span class="skill-tag">ModelSim</span>
-                    <span class="skill-tag">Quartus</span>
-                </div>
+  <section class="section" id="work">
+    <div class="section-eyebrow">Order — Projects</div>
+    <ul class="items">
+      <li>
+        <a href="project1.html" class="item">
+          <div class="item-row">
+            <span class="item-num">01</span>
+            <span class="item-name">Drawing Gator</span>
+          </div>
+          <p class="item-desc">Turns an image into vector lines a plotter can draw.</p>
+          <div class="item-skus">
+            <span class="sku">Python</span><span class="sku">PyQt6</span><span class="sku">Potrace</span><span class="sku">Mkbitmap</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="project2.html" class="item">
+          <div class="item-row">
+            <span class="item-num">02</span>
+            <span class="item-name">MIPS Processor</span>
+          </div>
+          <p class="item-desc">32-bit MIPS-like processor designed and simulated in VHDL with an FSM controller.</p>
+          <div class="item-skus">
+            <span class="sku">VHDL</span><span class="sku">ModelSim</span><span class="sku">FPGA</span><span class="sku">RAM/ROM</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="project4.html" class="item">
+          <div class="item-row">
+            <span class="item-num">03</span>
+            <span class="item-name">Cartly</span>
+            <span class="item-tag">Shipped</span>
+          </div>
+          <p class="item-desc">Shared grocery list app — build, split, and check off lists with your household.</p>
+          <div class="item-skus">
+            <span class="sku">React Native</span><span class="sku">TypeScript</span><span class="sku">Supabase</span><span class="sku">Expo Router</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="project3.html" class="item">
+          <div class="item-row">
+            <span class="item-num">04</span>
+            <span class="item-name">MoodRoll</span>
+            <span class="item-tag">Shipped</span>
+          </div>
+          <p class="item-desc">Movie and TV discovery platform with mood-based recommendations, favorites, and watched tracking.</p>
+          <div class="item-skus">
+            <span class="sku">React</span><span class="sku">TypeScript</span><span class="sku">Supabase</span><span class="sku">TMDB API</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <div class="item">
+            <a href="project5.html" class="item-main">
+            <div class="item-row">
+                <span class="item-num">05</span>
+                <span class="item-name">Algorix (Calculator)</span>
+                <span class="item-tag">Shipped</span>
             </div>
+
+            <p class="item-desc">Scientific, graphing and base-n calculator.</p>
+            </a>
+
+            <div class="item-skus">
+            <span class="sku">React</span>
+            <span class="sku">TypeScript</span>
+            <span class="sku">Supabase</span>
+            <span class="sku">TMDB API</span>
+
+            <a href="algorix_privacy.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="sku sku-link">
+                Privacy
+            </a>
+
+            <a href="algorix_support.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="sku sku-link">
+                Support
+            </a>
             </div>
-        </section>
-
-        <hr class="separation">
-
-        <section id="work">
-            <p class="label-section">Work</p>
-            <h2 class="title-section">Projects</h2>
-            <div class="project-grid">
-                <a href="project1.html" class="project-link">
-                    <div class="project-card">
-                        <p class="project-numbers">01</p>
-                        <h3 class="project-title">Drawing Gator</h3>
-                        <p class="section-text">Application that turns each image into vector lines to be drawn.</p>
-                        <div class="skills-grid">
-                            <span class="skill-tag-smaller">Python</span>
-                            <span class="skill-tag-smaller">PyQt6</span>
-                            <span class="skill-tag-smaller">Potrace</span>
-                            <span class="skill-tag-smaller">Mkbitmap</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="project2.html" class="project-link">
-                    <div class="project-card">
-                        <p class="project-numbers">02</p>
-                        <h3 class="project-title">MIPS Processor</h3>
-                        <p class="section-text">32-bit MIPS-like processor designed and simulated in VHDL with FSM controller.</p>
-                        <div class="skills-grid">
-                            <span class="skill-tag-smaller">VHDL</span>
-                            <span class="skill-tag-smaller">ModelSim</span>
-                            <span class="skill-tag-smaller">FPGA</span>
-                            <span class="skill-tag-smaller">RAM/ROM</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="project4.html" class="project-link">
-                    <div class="project-card">
-                        <p class="project-numbers">03</p>
-                        <h3 class="project-title">Trolley</h3>
-                        <p class="section-text">Application for keeping track of grocery list and sharing with others.</p>
-                        <div class="skills-grid">
-                            <span class="skill-tag-smaller">React Native</span>
-                            <span class="skill-tag-smaller">TypeScript</span>
-                            <span class="skill-tag-smaller">Supabase</span>
-                            <span class="skill-tag-smaller">Expo Router</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="project3.html" class="project-link">
-                    <div class="project-card">
-                        <p class="project-numbers">04</p>
-                        <h3 class="project-title">MoodRoll</h3>
-                        <p class="section-text">Movie and TV discovery platform with mood-based recommendations, favorites, watched tracking, and user authentication.</p>
-                        <div class="skills-grid">
-                            <span class="skill-tag-smaller">React</span>
-                            <span class="skill-tag-smaller">TypeScript</span>
-                            <span class="skill-tag-smaller">Supabase</span>
-                            <span class="skill-tag-smaller">TMDB API</span>
-                        </div>
-                    </div>
-                </a>
-
-                <div class="project-card">
-                    <p class="project-numbers">05</p>
-                    <a href="algorix.html" class="project-link">
-                        <h3 class="project-title">Scientific Calc</h3>
-                    </a>
-                    <p class="section-text">iOS app combining a scientific calculator, function grapher, and base-N converter in one tool.</p>
-                    <div class="button-grid" style="margin-top: 0;">
-                        <a href="algorix_privacy.html" class="button-section button-colors" style="width: auto; padding: 0 16px; height: 38px;" target="_blank">Privacy</a>
-                        <a href="algorix_support.html" class="button-section button-colors" style="width: auto; padding: 0 16px; height: 38px;" target="_blank">Support</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <hr class="separation">
-
-        <section id="contact">
-            <p class="label-section">Contact</p>
-            <h2 class="title-section">Get in touch</h2>
-            <div class="about-grid">
-                <div class="section-text">
-                    <p>Feel free to reach out to me! I am open to any opportunities to collaborate or discuss potential projects or job opportunities.</p>
-                </div>
-                <div class="contact-links">
-                    <div class="contact-row">
-                        <span class="contact-label">Email</span>
-                        <a class="contact-value" href="mailto:sarakola23@gmail.com">sarakola23@gmail.com</a>
-                    </div>
-                    <div class="contact-row">
-                        <span class="contact-label">LinkedIn</span>
-                        <a class="contact-value" href="https://linkedin.com/in/sara-kola23" target="_blank">linkedin.com/in/sara-kola23</a>
-                    </div>
-                    <div class="contact-row">
-                        <span class="contact-label">Github</span>
-                        <a class="contact-value" href="https://github.com/sarakola23" target="_blank">github.com/sarakola23</a>
-                    </div>
-                </div>
-            </div>
-        </section>
         </div>
-    </body>
+        </li>
+    </ul>
+    <div class="subtotal">
+      <span>PROJECTS SHIPPED</span>
+      <span>05</span>
+    </div>
+  </section>
+
+  <hr class="dashed">
+
+  <section class="section contact-block" id="contact">
+    <div class="section-eyebrow">Contact</div>
+    <p class="about-copy">Feel free to reach out — I'm open to opportunities to collaborate or discuss potential projects and roles.</p>
+    <ul class="contact-links">
+      <li>
+        <span class="label">Email</span>
+        <a href="mailto:sarakola23@gmail.com">sarakola23@gmail.com</a>
+      </li>
+      <li>
+        <span class="label">LinkedIn</span>
+        <a href="https://linkedin.com/in/sara-kola23" target="_blank">linkedin.com/in/sara-kola23</a>
+      </li>
+      <li>
+        <span class="label">Github</span>
+        <a href="https://github.com/sarakola23" target="_blank">github.com/sarakola23</a>
+      </li>
+    </ul>
+  </section>
+
+  <div class="barcode"></div>
+  <div class="barcode-num">S A R A K O L A — P O R T F O L I O</div>
+  <div class="thanks">
+    <span class="big">THANK YOU FOR VISITING</span>
+    Scroll up to see it all again
+  </div>
+
+  <div class="tear tear-bottom"></div>
+</div>
+
+</body>
 </html>

@@ -1,337 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moodroll – Sara Kola</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400;1,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIPS Processor – Sara Kola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Archivo:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #FAFAF6;
+    --paper-shadow: #ECEAE1;
+    --ink: #1C1C1C;
+    --ink-faded: #6b6b64;
+    --stamp: #C1440E;
+    --line: #cfcdc0;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:#e7e5da;
+    color:var(--ink);
+    font-family:'Space Mono', monospace;
+    padding:40px 16px 80px;
+  }
 
-        body {
-            background-color: #f7f7f0;
-            font-family: 'DM Sans', sans-serif;
-            color: #1A1814;
-        }
+  nav{
+    max-width:640px;
+    margin:0 auto 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-faded);
+  }
+  nav a{color:var(--ink-faded); text-decoration:none;}
+  nav a:hover{color:var(--stamp);}
 
-        html { scroll-behavior: smooth; }
+  .receipt{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--paper);
+    box-shadow: 0 1px 0 var(--paper-shadow), 0 30px 60px -20px rgba(0,0,0,0.25);
+    position:relative;
+    padding:48px 40px 0;
+  }
+  /* torn edge top and bottom */
+  .tear{
+    height:14px;
+    width:100%;
+    background:
+      linear-gradient(135deg, transparent 8px, var(--paper) 8px) 0 0,
+      linear-gradient(-135deg, transparent 8px, var(--paper) 8px) 0 0;
+    background-size: 16px 16px;
+    background-repeat:repeat-x;
+  }
+  .tear-top{background-color:#e7e5da;}
+  .tear-bottom{transform:scaleY(-1); background-color:#e7e5da;}
 
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background-color: #f7f7f0;
-            border-bottom: 1px solid #d3d3ca;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            height: 64px;
-            padding: 0 40px;
-            z-index: 100;
-        }
+  .store-head{
+    text-align:center;
+    margin-bottom:28px;
+  }
+  .store-head .brand{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:34px;
+    letter-spacing:-0.01em;
+  }
+  .store-head .tagline{
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faded);
+    margin-top:8px;
+  }
+  .store-head .meta{
+    font-size:11px;
+    color:var(--ink-faded);
+    margin-top:14px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+  }
 
-        .nav-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 22px;
-            font-weight: normal;
-            color: #1A1814;
-        }
+  .dashed{
+    border:none;
+    border-top:1.5px dashed var(--line);
+    margin:26px 0;
+  }
 
-        .nav-back {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            color: #888;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-            transition: color 0.2s;
-        }
-        .nav-back:hover { color: #2A5C45; }
+  .stamp{
+    display:inline-block;
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:var(--stamp);
+    border:2px solid var(--stamp);
+    padding:4px 10px;
+    transform:rotate(-4deg);
+    border-radius:3px;
+  }
 
-        .contact-value,
-        .contact-value:visited {
-            color: inherit;
-            text-decoration: none;
-        }
+  .line-item{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    font-size:13px;
+    line-height:1.7;
+    padding:2px 0;
+  }
+  .line-item .desc{color:var(--ink);}
+  .line-item .qty{color:var(--ink-faded); white-space:nowrap;}
 
-        .page-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
+  .section-eyebrow{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-faded);
+    margin-bottom:14px;
+  }
 
-        .hero {
-            padding-top: 130px;
-            padding-bottom: 60px;
-        }
+  .about-copy{
+    font-size:13.5px;
+    line-height:1.85;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .about-copy:last-child{margin-bottom:0;}
 
-        .body-name {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(42px, 7vw, 72px);
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            font-weight: normal;
-        }
+  .worked-list{list-style:none;}
+  .worked-list li{
+    display:flex;
+    gap:10px;
+    font-size:13px;
+    line-height:1.75;
+    margin-bottom:6px;
+    align-items:flex-start;
+  }
+  .worked-list li::before{
+    content:"☑";
+    color:var(--stamp);
+    font-size:13px;
+    line-height:1.75;
+    flex-shrink:0;
+  }
 
-        .sec-part { color: #2A5C45; font-style: italic; }
+  .sku-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    margin-top:16px;
+  }
+  .sku{
+    font-size:11px;
+    letter-spacing:0.04em;
+    color:var(--ink);
+    border-bottom:1px dotted var(--line);
+    padding-bottom:2px;
+  }
+  .sku::before{content:"#"; color:var(--ink-faded);}
 
-        .title-name {
-            font-size: 15px;
-            font-style: italic;
-            font-weight: 500;
-            color: #888;
-            margin-top: 12px;
-        }
+  .totals{
+    margin-top:10px;
+  }
+  .totals .line-item.grand{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:15px;
+    margin-top:6px;
+  }
 
-        .divider {
-            border: none;
-            border-top: 1px solid #d3d3ca;
-        }
+  .gallery-title{
+    text-align:center;
+    margin-bottom:20px;
+  }
 
-        .about-section {
-            padding: 60px 0;
-        }
+  .strip{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding-bottom: 28px;
+  }
+  .strip::-webkit-scrollbar{height:6px;}
+  .strip::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px;}
 
-        .label {
-            font-size: 13px;
-            color: #888;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
+  .stub {
+  width: 100%;
+}
 
-        .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(24px, 4vw, 38px);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            font-weight: normal;
-            margin-bottom: 36px;
-        }
+.stub .frame {
+  width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  position: relative;
+  transform: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+  .stub:nth-child(odd) .frame{--r:-2deg;}
+  .stub:nth-child(even) .frame{--r:1.5deg;}
+  .stub .frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
 
-        .about-col p {
-            font-size: 14px;
-            font-style: italic;
-            color: #666;
-            line-height: 1.75;
-            margin-bottom: 14px;
-        }
-        .about-col p:last-child { margin-bottom: 0; }
+.stub .frame img,
+.stub .frame video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
 
-        .skills-label {
-            font-size: 13px;
-            color: #888;
-            letter-spacing: 0.4px;
-            margin-bottom: 12px;
-        }
+  .stub .placeholder{
+    width:100%;height:100%;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:8px;
+    color:var(--ink-faded);
+  }
+  .stub .placeholder svg{width:26px; height:20px; opacity:.35;}
+  .stub .caption {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 10px;
+}
 
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+  .barcode{
+    height:36px;
+    margin:30px 0 6px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--ink) 0px, var(--ink) 2px,
+      transparent 2px, transparent 4px,
+      var(--ink) 4px, var(--ink) 5px,
+      transparent 5px, transparent 9px,
+      var(--ink) 9px, var(--ink) 12px,
+      transparent 12px, transparent 14px
+    );
+    opacity:0.85;
+  }
+  .barcode-num{
+    text-align:center;
+    font-size:11px;
+    letter-spacing:0.3em;
+    color:var(--ink-faded);
+    margin-bottom:30px;
+  }
 
-        .skill-tag {
-            font-size: 12px;
-            background-color: #EBF2EE;
-            color: #2A5C45;
-            padding: 5px 14px;
-            border-radius: 2px;
-            font-weight: 500;
-            letter-spacing: 0.2px;
-        }
+  .thanks{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-faded);
+    padding-bottom:36px;
+  }
+  .thanks .big{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:13px;
+    color:var(--ink);
+    display:block;
+    margin-bottom:6px;
+    letter-spacing:0.04em;
+  }
 
-        .gallery-section {
-            padding: 60px 0 80px;
-        }
+  @media (max-width:700px) {
+  .receipt {
+    padding: 36px 20px 0;
+  }
 
-        .image-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .gallery-row {
-            display: grid;
-            gap: 16px;
-        }
-
-        .gallery-row-1 { grid-template-columns: 1fr; }
-        .gallery-row-2 { grid-template-columns: repeat(2, 1fr); }
-        .gallery-row-3 { grid-template-columns: repeat(2, 1fr); }
-
-        .gallery-row-1 .card { aspect-ratio: 16 / 9; }
-        .gallery-row-2 .card,
-        .gallery-row-3 .card { aspect-ratio: 4 / 3; }
-
-        .card {
-            border-radius: 4px;
-            overflow: hidden;
-            background-color: #e8e8e0;
-            border: none;
-            position: relative;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center top;
-            display: block;
-        }
-
-        .card .placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .card .placeholder-icon {
-            width: 36px;
-            height: 28px;
-            opacity: 0.25;
-        }
-
-        .card .placeholder-label {
-            font-size: 12px;
-            color: #888;
-            letter-spacing: 0.4px;
-        }
-
-        .card:nth-child(1) { background-color: transparent; }
-        .card:nth-child(2) { background-color: transparent; }
-        .card:nth-child(3) { background-color: transparent; }
-        .card:nth-child(4) { background-color: transparent; }
-        .card:nth-child(5) { background-color: transparent; }
-
-        @media (max-width: 700px) {
-            nav { padding: 0 20px; }
-            .page-content { padding: 0 20px; }
-            .about-grid { grid-template-columns: 1fr; gap: 24px; }
-            .gallery-row-2,
-            .gallery-row-3 { grid-template-columns: 1fr; }
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .contact-label {
-            font-family: 'Arial Narrow';
-            font-size: 15px;
-            color: rgb(180, 180, 180);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            width: 190px;
-        }
-    </style>
+  .strip {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+</style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <h1 class="nav-title">Sara Kola</h1>
-        <a href="index.html" class="nav-back">← Back to Home</a>
-    </nav>
-</header>
+<nav>
+  <span>Sara Kola</span>
+  <a href="index.html">← Back to Home</a>
+</nav>
 
-<main class="page-content">
+<div class="receipt">
+  <div class="tear tear-top"></div>
 
-    <section class="hero">
-        <h1 class="body-name">Project<br><em class="sec-part">MIPS Processor</em></h1>
-        <p class="title-name">MIPS Processor Implementation</p>
-    </section>
+  <div class="store-head">
+    <div class="brand">MIPS PROCESSOR</div>
+    <div class="tagline">MIPS Processor Implementation</div>
+    <div class="meta">
+      <span>Designed &amp; Built by MIPS Processor team</span>
+      <span>·</span>
+      <span>RTL and DE-10 Lite</span>
+    </div>
+  </div>
 
-    <hr class="divider">
+  <hr class="dashed">
 
-    <section class="about-section">
-        <p class="label">About the project</p>
-        <h2 class="section-title">MIPS Processor</h2>
+  <div class="section-eyebrow">Order Summary</div>
+  <p class="about-copy">MIPS Processor is a 32-bit MIPS-like processor designed and simulated in VHDL with an FSM controller.</p>
+  <p class="about-copy">The processor supports R-type, I-type and J-type instructions, including arithmetic, logic, and memory operations.</p>
+  <span class="stamp">Fully working - 100% passes all tests</span>
 
-        <div class="about-grid">
-            <div class="about-col">
-                <p>Digital Design</p>
-                <p>MIPS Processor is a 32-bit MIPS-like processor designed and simulated in VHDL with an FSM controller.</p>
-                <p>The processor supports R-type, I-type and J-type instructions, including arithmetic, logic, and memory operations.</p>
-            </div>
-            <div class="about-col">
-                <p>Worked on</p>
-                    <p>● Designed ALU supporting arithmetic, logic, shift and comparison operations.</p>
-                    <p>● Implemented memory module RAM and memory mapped I/O ports.</p>
-                    <p>● Implemented the FSM controller for fetch, decode and execute stages.</p>
-            </div>
+  <hr class="dashed">
+
+  <div class="section-eyebrow">Items — What I Built</div>
+  <ul class="worked-list">
+    <li>Designed ALU supporting arithmetic, logic, shift and comparison operations.</li>
+    <li>Implemented memory module RAM and memory mapped I/O ports.</li>
+    <li>Implemented the FSM controller for fetch, decode and execute stages.</li>
+  </ul>
+
+  <div class="totals">
+    <div class="line-item grand">
+      <span class="desc">TOTAL FEATURES SHIPPED</span>
+      <span class="qty">3</span>
+    </div>
+  </div>
+
+  <hr class="dashed">
+
+  <div class="section-eyebrow">Built With</div>
+  <div class="sku-row">
+    <span class="sku">VHDL</span>
+    <span class="sku">ModelSim</span>
+    <span class="sku">Quartus</span>
+    <span class="sku">FPGA</span>
+    <span class="sku">DE-10 Lite</span>
+  </div>
+
+  <hr class="dashed">
+
+  <div class="gallery-title">
+    <div class="section-eyebrow" style="margin-bottom:4px;">Photo Receipt</div>
+  </div>
+
+  <div class="strip">
+    <div class="stub">
+      <div class="frame">
+        <img src="images/memory-design.png" alt="Drawing Gator home dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none">
+          <svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="currentColor"/><circle cx="10" cy="9" r="3" stroke="currentColor"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="currentColor" stroke-linejoin="round"/></svg>
         </div>
-
-        <p class="skills-label">Built with</p>
-        <div class="skills-grid">
-            <span class="skill-tag">VHDL</span>
-                <span class="skill-tag">ModelSim</span>
-                <span class="skill-tag">Quartus</span>
-                <span class="skill-tag">FPGA</span>
-    </section>
-
-    <hr class="divider">
-
-    <!-- Gallery -->
-    <section class="gallery-section">
-        <div class="image-grid">
-            <div class="gallery-row gallery-row-1">
-                <div class="card">
-                    <img src="images/memory-design.png" alt="Moodroll home"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <div class="placeholder" style="display:none">
-                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
-                        <span class="placeholder-label">Homepage</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-row gallery-row-2">
-                <div class="card">
-                    <img src="images/mips-screenshot.jpg" alt="Favorites"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <div class="placeholder" style="display:none">
-                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
-                        <span class="placeholder-label">Favorites</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/IMG_6200.jpg" alt="Surprise me"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <div class="placeholder" style="display:none">
-                        <svg class="placeholder-icon" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="#888"/><circle cx="10" cy="9" r="3" stroke="#888"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="#888" stroke-linejoin="round"/></svg>
-                        <span class="placeholder-label">Surprise me</span>
-                    </div>
-                </div>
-            </div>
-
-            
-
+      </div>
+      <div class="caption">Design</div>
+    </div>
+    <div class="stub">
+      <div class="frame">
+        <img src="images/mips-screenshot.jpg" alt="Profile page" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none">
+          <svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="currentColor"/><circle cx="10" cy="9" r="3" stroke="currentColor"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="currentColor" stroke-linejoin="round"/></svg>
         </div>
-    </section>
+      </div>
+      <div class="caption">Mips full view</div>
+    </div>
 
-</main>
+  </div>
+
+  <div class="barcode"></div>
+  <div class="barcode-num">MIPS Processor — 0 0 2 — S K</div>
+
+  <div class="thanks">
+    <span class="big">THANK YOU FOR SHOPPING</span>
+    Return to portfolio for more receipts
+  </div>
+
+  <div class="tear tear-bottom"></div>
+</div>
 
 </body>
 </html>

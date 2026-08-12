@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moodroll– Sara Kola</title>
+<title>Algorix– Sara Kola</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Archivo:wght@500;700;800&display=swap" rel="stylesheet">
@@ -182,43 +182,37 @@
   }
 
   .strip{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    padding-bottom: 28px;
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    padding-bottom:28px;
+    scrollbar-width:thin;
   }
   .strip::-webkit-scrollbar{height:6px;}
   .strip::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px;}
 
-  .stub {
-  width: 100%;
-}
-
-.stub .frame {
-  width: 100%;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  overflow: hidden;
-  position: relative;
-  transform: none;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-  .stub:nth-child(odd) .frame{--r:-2deg;}
-  .stub:nth-child(even) .frame{--r:1.5deg;}
-  .stub .frame:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-.stub .frame img,
-.stub .frame video {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
+  .stub{
+    flex:0 0 auto;
+    width:120px;
+  }
+  .stub .frame{
+    width:120px;
+    height:240px;
+    background:#EFEDE3;
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    position:relative;
+    transform:rotate(var(--r,0deg));
+    transition: transform .2s ease;
+  }
+  .stub .frame:hover{transform:rotate(0deg) scale(1.03);}
+  .stub .frame img{
+    width:100%; height:100%;
+    object-fit:contain;
+    object-position:center top;
+    display:block;
+  }
   .stub .placeholder{
     width:100%;height:100%;
     display:flex; flex-direction:column;
@@ -226,14 +220,14 @@
     color:var(--ink-faded);
   }
   .stub .placeholder svg{width:26px; height:20px; opacity:.35;}
-  .stub .caption {
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-faded);
-  margin-top: 10px;
-}
+  .stub .caption{
+    text-align:center;
+    font-size:9.5px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink-faded);
+    margin-top:8px;
+  }
 
   .barcode{
     height:36px;
@@ -273,16 +267,9 @@
     letter-spacing:0.04em;
   }
 
-  @media (max-width:700px) {
-    .receipt {
-        padding: 36px 20px 0;
-    }
-
-    .strip {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    }
+  @media (max-width:700px){
+    .receipt{padding:36px 20px 0;}
+  }
 </style>
 </head>
 <body>
@@ -296,35 +283,36 @@
   <div class="tear tear-top"></div>
 
   <div class="store-head">
-    <div class="brand">MOODROLL</div>
-    <div class="tagline">Mood-based movie discovery</div>
+    <div class="brand">ALGORIX</div>
+    <div class="tagline">Scientific, graphing and base-n calculator</div>
     <div class="meta">
       <span>Designed &amp; Built by Sara Kola</span>
       <span>·</span>
-      <span>API and React</span>
+      <span>App Store Release</span>
     </div>
   </div>
 
   <hr class="dashed">
 
   <div class="section-eyebrow">Order Summary</div>
-  <p class="about-copy">Moodroll is a mood-based movie discovery platform that helps users find films based on how they feel rather than traditional genres or search.</p>
-  <p class="about-copy">It integrates TMDB API for movie data and Supabase for authentication, user preferences, and saved lists.</p>
-  <span class="stamp">Fully working web application</span>
+  <p class="about-copy">Algorix is a scientific, graphing, and base-n calculator app designed for precision and ease of use.</p>
+  <p class="about-copy">It features a clean interface with support for complex mathematical operations, graphing and base-n converter.</p>
+  <span class="stamp">Fully Shipped · Live on App Store</span>
 
   <hr class="dashed">
 
   <div class="section-eyebrow">Items — What I Built</div>
   <ul class="worked-list">
-    <li>Built responsive React + TypeScript UI with dynamic mood filtering system.</li>
-    <li>Integrated TMDB API for real-time movie data fetching and search.</li>
-    <li>Implemented Supabase backend for authentication and persistent user data.</li>
+    <li>React Native + TypeScript mobile app, navigation via Expo Router</li>
+    <li>Scientific calculator functionality with support for complex mathematical operations</li>
+    <li>Graphing capabilities for visualizing mathematical functions</li>
+    <li>Base-n converter for different number systems</li>
   </ul>
 
   <div class="totals">
     <div class="line-item grand">
       <span class="desc">TOTAL FEATURES SHIPPED</span>
-      <span class="qty">3</span>
+      <span class="qty">4</span>
     </div>
   </div>
 
@@ -332,10 +320,9 @@
 
   <div class="section-eyebrow">Built With</div>
   <div class="sku-row">
-    <span class="sku">React</span>
+    <span class="sku">React Native</span>
     <span class="sku">TypeScript</span>
-    <span class="sku">TMDB API</span>
-    <span class="sku">Supabase</span>
+    <span class="sku">Expo Router</span>
   </div>
 
   <hr class="dashed">
@@ -347,7 +334,7 @@
   <div class="strip">
     <div class="stub">
       <div class="frame">
-        <img src="images/homepage.png" alt="Drawing Gator home dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <img src="images/ios_1_1.jpg" alt="Algorix home dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
         <div class="placeholder" style="display:none">
           <svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="currentColor"/><circle cx="10" cy="9" r="3" stroke="currentColor"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="currentColor" stroke-linejoin="round"/></svg>
         </div>
@@ -356,26 +343,26 @@
     </div>
     <div class="stub">
       <div class="frame">
-        <img src="images/watchedpage.png" alt="Profile page" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <img src="images/ios_1_2.jpg" alt="Algorix graphing feature" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
         <div class="placeholder" style="display:none">
           <svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="currentColor"/><circle cx="10" cy="9" r="3" stroke="currentColor"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="currentColor" stroke-linejoin="round"/></svg>
         </div>
       </div>
-      <div class="caption">Watched Page</div>
+      <div class="caption">Graphing</div>
     </div>
     <div class="stub">
       <div class="frame">
-        <img src="images/surprisepage.png" alt="Drawing Gator home dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <img src="images/ios_1_3.jpg" alt="Algorix base-n converter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
         <div class="placeholder" style="display:none">
           <svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="35" height="27" rx="1.5" stroke="currentColor"/><circle cx="10" cy="9" r="3" stroke="currentColor"/><path d="M0 19l9-7 7 6 5-4 15 10" stroke="currentColor" stroke-linejoin="round"/></svg>
         </div>
       </div>
-      <div class="caption">Surprise Page</div>
+      <div class="caption">Base-n Converter</div>
     </div>
   </div>
 
   <div class="barcode"></div>
-  <div class="barcode-num">Moodroll— 0 0 4 — S K</div>
+  <div class="barcode-num">A L G O R I X — 0 0 5 — S K</div>
 
   <div class="thanks">
     <span class="big">THANK YOU FOR SHOPPING</span>
