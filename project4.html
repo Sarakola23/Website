@@ -272,6 +272,33 @@
   @media (max-width:700px){
     .receipt{padding:36px 20px 0;}
   }
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-links a {
+  color: var(--stamp);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--stamp);
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.project-links a:hover {
+  opacity: 0.65;
+}
+
+.project-links span {
+  color: var(--ink-faded);
+}
 </style>
 </head>
 <body>
@@ -291,6 +318,14 @@
       <span>Designed &amp; Built by Sara Kola</span>
       <span>·</span>
       <span>App Store Release</span>
+    </div>
+
+    <div class="project-links">
+        <a href="https://apps.apple.com/us/app/trolleygo/id6783933101"
+            target="_blank"
+            rel="noopener noreferrer">
+            AppStore Link ↗
+        </a>
     </div>
   </div>
 
